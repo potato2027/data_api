@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/search', async (req,resp) => {
+app.post('/search', async (req,resp) => {
     
 
     let filters = {
@@ -58,11 +58,11 @@ app.get('/search', async (req,resp) => {
     }
 
     
-    console.log(req.query);
+    console.log(req.body);
 
-    for(key in req.query) {
+    for(key in req.body) {
         if(key in filters) {
-            filters[key] = req.query[key];
+            filters[key] = req.body[key];
         }
     }
 
@@ -577,6 +577,7 @@ app.get('/search', async (req,resp) => {
     }
 
     resp.send(data);
+    
 })
 
 app.listen(5000)
