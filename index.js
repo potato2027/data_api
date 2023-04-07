@@ -5,57 +5,67 @@ const app = express();
 
 app.use(express.json());
 
-let filters = {
-    "customer_id": "",
-    "referred_a_friend": "",
-    "number_of_referrals": -1,
-    "tenure_in_months": -1,
-    "offer": "",
-    "phone_service": "",
-    "avg_monthly_long_distance_charges": -1,
-    "multiple_lines": "",
-    "internet_service": "",
-    "internet_type": "",
-    "avg_monthly_gb_download": -1,
-    "online_security": "",
-    "online_backup": "",
-    "device_protection_plan": "",
-    "premium_tech_support": "",
-    "streaming_tv": "",
-    "streaming_movies": "",
-    "streaming_music": "",
-    "unlimited_data": "",
-    "contract": "",
-    "paperless_billing": "",
-    "payment_method": "",
-    "monthly_charge": -1,
-    "total_regular_charges": -1,
-    "total_refunds": -1,
-    "total_extra_data_charges": -1,
-    "total_long_distance_charges": -1,
-    "gender": "Male",
-    "age": -1,
-    "under_30": "",
-    "senior_citizen": "",
-    "married": "",
-    "dependents": "",
-    "number_of_dependents": -1,
-    "city": "",
-    "zip_code": -1,
-    "latitude": "",
-    "longitude": "",
-    "population": -1,
-    "churn_value": 1,
-    "cltv": -1,
-    "churn_category": "",
-    "churn_reason": "Moved",
-    "total_customer_svc_requests": -1,
-    "product_service_issues_reported": -1,
-    "customer_satisfaction": -1
-}
-
-app.get('/', async (req,resp) => {
+app.get('/search', async (req,resp) => {
     
+
+    let filters = {
+        "customer_id": "",
+        "referred_a_friend": "",
+        "number_of_referrals": -1,
+        "tenure_in_months": -1,
+        "offer": "",
+        "phone_service": "",
+        "avg_monthly_long_distance_charges": -1,
+        "multiple_lines": "",
+        "internet_service": "",
+        "internet_type": "",
+        "avg_monthly_gb_download": -1,
+        "online_security": "",
+        "online_backup": "",
+        "device_protection_plan": "",
+        "premium_tech_support": "",
+        "streaming_tv": "",
+        "streaming_movies": "",
+        "streaming_music": "",
+        "unlimited_data": "",
+        "contract": "",
+        "paperless_billing": "",
+        "payment_method": "",
+        "monthly_charge": -1,
+        "total_regular_charges": -1,
+        "total_refunds": -1,
+        "total_extra_data_charges": -1,
+        "total_long_distance_charges": -1,
+        "gender": "",
+        "age": -1,
+        "under_30": "",
+        "senior_citizen": "",
+        "married": "",
+        "dependents": "",
+        "number_of_dependents": -1,
+        "city": "",
+        "zip_code": -1,
+        "latitude": "",
+        "longitude": "",
+        "population": -1,
+        "churn_value": 1,
+        "cltv": -1,
+        "churn_category": "",
+        "churn_reason": "",
+        "total_customer_svc_requests": -1,
+        "product_service_issues_reported": -1,
+        "customer_satisfaction": -1
+    }
+
+    
+    console.log(req.query);
+
+    for(key in req.query) {
+        if(key in filters) {
+            filters[key] = req.query[key];
+        }
+    }
+
     let data = await user.find()
 
     let new_data = [];
@@ -70,7 +80,6 @@ app.get('/', async (req,resp) => {
     }
 
     new_data = [];
-
 
     if(filters.referred_a_friend!= "") {
         for(var i=0; i<data.length; i++) {
