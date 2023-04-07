@@ -54,7 +54,7 @@ let filters = {
     "customer_satisfaction": -1
 }
 
-app.get('/search', async (req,resp) => {
+app.get('/', async (req,resp) => {
     
     let data = await user.find()
 
