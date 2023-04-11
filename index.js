@@ -2,9 +2,10 @@ require('./config')
 const express = require('express');
 const user = require('./schema')
 const app = express();
+const cors = require('cors');
 
 app.use(express.json());
-
+app.use(cors());
 app.post('/search', async (req,resp) => {
     
 
