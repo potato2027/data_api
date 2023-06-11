@@ -577,7 +577,7 @@ app.post('/search', async (req,resp) => {
         }
         data = new_data;
     }
-    resp.setHeader("Access-Control-Allow-Origin", "*");
+
     resp.send(data);
     
 })
