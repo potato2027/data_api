@@ -8,8 +8,7 @@ app.use(express.json());
 app.use(cors());
 
 app.post('/search', async (req,resp) => {
-    
-    resp.setHeader("Access-Control-Allow-Origin", "*");    
+     
 
     let filters = {
         "customer_id": "",
